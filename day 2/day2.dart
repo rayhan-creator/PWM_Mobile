@@ -1,13 +1,63 @@
+import 'package:flutter/material.dart';
+
 void main() {
-  var hari = "selasa";
-  int harga = 30000;
-  if (hari == "jumat") {
-    harga = 20000;
-  } else if (hari == "sabtu" || hari == "ahad") {
-    harga = 40000;
-  } else {
-    harga = 30000;
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      ),
+      home: const MyHomePage(title: 'Biodata'),
+    );
   }
-  print('Harga tiketnya adalah : Rp${harga}');
-  print(hari)
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Row(
+              children: [
+                Container(height: 100, width: 100, color: Colors.brown),
+                Column(
+                  children: [Text("Nama"), Text("Muhammad Rayhan Adrian")],
+                ),
+              ],
+            ),
+            Text("Bio"),
+            Text(
+              "Saya adalah Rayhan dari sekolah Rabbaanii Islamic Boarding School",
+            ),
+            Text("Skill"),
+            Column(children: [Text("Flutter"), Text("HTML"), Text("CSS")]),
+          ],
+        ),
+      ),
+    );
+  }
 }
